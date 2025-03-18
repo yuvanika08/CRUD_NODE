@@ -12,7 +12,11 @@ const authenticate = async (req, res, next) => {
     req.user = user;
     next();
   } catch (error) {
-    res.status(401).json({ error: 'Please authenticate.' });
+    res.status(401).json({
+      "code": 401,
+      "error": "Please authenticate.",
+      "message": "Authentication failed. Either the token is missing, invalid, or the user does not exist."
+    });
   }
 };
 
